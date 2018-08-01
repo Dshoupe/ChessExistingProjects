@@ -1,0 +1,30 @@
+﻿body {
+}
+
+.white, .black {
+    width: 70px;
+    height: 70px;
+    padding: 0;
+    text-align: center;
+}
+
+.white {
+    background-image: url('../Images/whiteMarble.png');
+}
+
+.black {
+    background-image: url('../Images/silverMarble.png');
+}
+
+.border {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    background-color: khaki;
+}
+.horizontalBorder {
+    height: 30px;
+}
+.verticalBorder {
+    width: 30px;
+}
