@@ -10,11 +10,29 @@ namespace Kvam.Chess.Controllers
             return View();
         }
 
+        public ActionResult Chess()
+        {
+            return View();
+        }
+
+        public ActionResult Chess906()
+        {
+            return View();
+        }
+
         public ActionResult CreateGame()
         {
-            var game = Game.CreateGame();
+            var game = Game.CreateGame(false);
 
-            return Json(new { GameId = game.Id, PlayerId = game.WhitePlayerIdentifier },
+            return Json(new { GameId = game.Id, PlayerId = game.WhitePlayerIdentifier, PiecePlaces = Game.PiecePlaces, Is906 = false },
+                JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CreateGame906()
+        {
+            var game = Game.CreateGame(true);
+
+            return Json(new { GameId = game.Id, PlayerId = game.WhitePlayerIdentifier, PiecePlaces = Game.PiecePlaces, Is906 = true },
                 JsonRequestBehavior.AllowGet);
         }
 
@@ -23,9 +41,7 @@ namespace Kvam.Chess.Controllers
         {
             var moveWrapper = Game.ListLegalMoves(gameId, playerId, lastMove);
 
-
-            return Json(moveWrapper,
-                        JsonRequestBehavior.AllowGet);
+            return Json(moveWrapper, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿<header>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/chess.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/chess.js")"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: 'CreateGame/'
+            }).done(function (game) {
+                chessEngine.setup({
+                    board: '#board',
+                    renderFor: 'white',
+                    inDebugMode: false,
+                    gameId: game.GameId,
+                    playerId: game.PlayerId,
+                    holder: game.PiecePlaces,
+                    is906: game.Is906
+                });
+            });
+        });
+    </script>
+
+</header>
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Chess!</h1> 
+                <h2>A javascript/jQuery/html5/mvc4 game</h2>
+            </hgroup>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <div id="board"></div>
+    </section>
+</div>
